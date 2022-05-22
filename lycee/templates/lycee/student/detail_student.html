@@ -1,0 +1,36 @@
+{% extends 'master.html' %}
+{% load static %}
+{%if liste%}
+  {% block title %}
+    Details of a student
+  {% endblock %}
+
+  {% block content %}
+    <div class="container">
+        <div class="row">
+          <div class='col-4'>
+            <h3>{{liste.first_name}} {{liste.last_name}}</h3>
+          </div>
+          <div class="col">
+            <ul>
+              <li>{{liste.birth_date}}</li>
+              <li>{{liste.phone}}</li>
+              <li>{{liste.email}}</li>
+              <li>{{liste.cursus}}</li>
+              <li>{{liste.comments}}</li>
+            </ul>
+          </div>
+        </div>
+      <div class ="container">
+        <div class="row"></div>
+          <a href="/lycee/student/edit/{{liste.id}}">
+            <button class="btn btn-primary">Edit student data</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+{% else %}
+<p>No Cursus to show</p>
+{% endif %}
+  

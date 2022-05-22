@@ -1,0 +1,26 @@
+{% extends 'master.html' %}
+{% if liste %}
+  {% block title %}
+    {{cursus.name}} : Call of roll
+  {% endblock %}
+  
+  {% block content %}
+    <form method="POST">
+      Select date and check if student is missing
+      {% csrf_token %}
+      <!-- cross site request forgeries -->
+      <!-- https://docs.djangoproject.com/fr/3.1/ref/crsf/ -->
+      {{form.as_p}}
+      <div class="buttons">
+        <button class="btn btn-primary radius left" type='cancel'>
+          <a href={% url 'index' %}>Cancel</a>
+        </button>
+        <button class="btn btn-success radius right" type='submit'>
+          Submit
+        </button>
+      </div>
+    </form>
+  {% endblock %}
+  {% else %}
+    <p>No Cursus to show</p>
+  {% endif %}
